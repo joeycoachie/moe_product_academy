@@ -3,12 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>M.O.E. // PRODUCT ACADEMY</title>
+    <title>M.O.E. // CLINICAL ARCHIVE & COMBAT MANUAL</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Space+Mono:wght@400;700&display=swap');
         body { font-family: 'Inter', sans-serif; background-color: #050505; color: #e0e0e0; height: 100vh; overflow: hidden; }
-        .mono { font-family: 'Space Mono', monospace; }
+        .mono { font-family: 'Space Mono', monospace; letter-spacing: 0.05em; }
+        .bg-surface { background-color: #111111; }
+        .border-line { border-color: #222222; }
         
         /* Custom Scrollbar */
         ::-webkit-scrollbar { width: 6px; }
@@ -16,9 +18,10 @@
         ::-webkit-scrollbar-thumb { background: #333; border-radius: 10px; }
         ::-webkit-scrollbar-thumb:hover { background: #555; }
 
-        .nav-item { cursor: pointer; border-left: 2px solid transparent; transition: all 0.2s ease; }
+        .nav-item { cursor: pointer; border-left: 3px solid transparent; transition: all 0.2s; }
         .nav-item:hover { background-color: #1a1a1a; }
         .nav-item.active { border-left-color: #3de0b0; background-color: #111; color: #fff; font-weight: 600; }
+        .nav-item.clinical { border-left-color: #9b7fff; }
         
         .fade-in { animation: fadeIn 0.3s ease-out forwards; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
@@ -26,302 +29,311 @@
 </head>
 <body class="flex flex-col h-screen">
 
-    <!-- HEADER -->
-    <header class="border-b border-[#222] p-4 bg-[#111] flex justify-between items-center shrink-0 shadow-md z-10">
+    <header class="border-b border-line p-4 md:px-6 bg-surface flex justify-between items-center shrink-0 shadow-md z-10">
         <div>
-            <h1 class="text-xl font-bold uppercase tracking-tighter text-white">M.O.E. Product Academy</h1>
-            <p class="text-[10px] mono text-[#888] mt-1">Operational Combat Manual // Biological Interventions</p>
+            <h1 class="text-xl font-bold uppercase tracking-tighter text-white">M.O.E. Clinical Archive</h1>
+            <p class="text-[10px] mono text-[#888] mt-1">Multi-Layered Combat Manual // S-Rank Diagnostics</p>
         </div>
-        <div class="hidden md:flex gap-4">
-            <span class="px-3 py-1 bg-green-900/20 text-[#3de0b0] border border-green-900 text-[10px] mono uppercase rounded">System Status: Active</span>
+        <div class="hidden md:flex gap-4 border-l border-line pl-6">
+            <span class="text-[10px] mono text-[#555] uppercase">System Status: <span class="text-[#3de0b0]">Online</span></span>
         </div>
     </header>
 
     <main class="flex flex-1 overflow-hidden">
         
-        <!-- SIDEBAR NAVIGATION -->
-        <aside class="w-64 border-r border-[#222] bg-[#0a0a0a] flex flex-col h-full shrink-0 overflow-y-auto">
-            <div class="p-3 border-b border-[#222] bg-[#111]">
-                <p class="text-[10px] mono text-white uppercase tracking-widest">Foundation (Core Fuel)</p>
+        <aside class="w-64 border-r border-line bg-[#0a0a0a] flex flex-col h-full shrink-0 overflow-y-auto">
+            
+            <div class="p-4 border-b border-line bg-[#111] sticky top-0 z-10">
+                <p class="text-[10px] mono text-[#666] uppercase tracking-widest">Clinical Logic Gates</p>
+            </div>
+            <div class="nav-item clinical p-3 text-xs text-[#aaa]" onclick="loadModule('gate_hungry')" id="nav-gate_hungry">⚠️ Client is Hungry</div>
+            <div class="nav-item clinical p-3 text-xs text-[#aaa]" onclick="loadModule('logic_ra')" id="nav-logic_ra">Rheumatoid Arthritis (RA)</div>
+            <div class="nav-item clinical p-3 text-xs text-[#aaa]" onclick="loadModule('logic_tofi')" id="nav-logic_tofi">TOFI (Skinny Fat)</div>
+            <div class="nav-item clinical p-3 text-xs text-[#aaa]" onclick="loadModule('logic_edema')" id="nav-logic_edema">Collagen Edema (Swelling)</div>
+
+            <div class="p-4 border-b border-t border-line bg-[#111] sticky top-0 z-10">
+                <p class="text-[10px] mono text-[#666] uppercase tracking-widest">Core Architecture</p>
             </div>
             <div class="nav-item p-3 text-xs text-[#aaa]" onclick="loadModule('f1')" id="nav-f1">Formula 1 (Precision Fuel)</div>
-            <div class="nav-item p-3 text-xs text-[#aaa]" onclick="loadModule('f3')" id="nav-f3">Formula 3 (Structural Armor)</div>
+            <div class="nav-item p-3 text-xs text-[#aaa]" onclick="loadModule('f3')" id="nav-f3">F3 Protein (Structural Armor)</div>
             <div class="nav-item p-3 text-xs text-[#aaa]" onclick="loadModule('tea')" id="nav-tea">Tea Mix (Metabolic Furnace)</div>
             <div class="nav-item p-3 text-xs text-[#aaa]" onclick="loadModule('aloe')" id="nav-aloe">Aloe Concentrate (Gut Rinse)</div>
 
-            <div class="p-3 border-b border-t border-[#222] bg-[#111]">
-                <p class="text-[10px] mono text-white uppercase tracking-widest">Cellular & Vascular</p>
+            <div class="p-4 border-b border-t border-line bg-[#111] sticky top-0 z-10">
+                <p class="text-[10px] mono text-[#666] uppercase tracking-widest">Vascular & Cellular</p>
             </div>
+            <div class="nav-item p-3 text-xs text-[#aaa]" onclick="loadModule('niteworks')" id="nav-niteworks">Niteworks (NO Highway)</div>
+            <div class="nav-item p-3 text-xs text-[#aaa]" onclick="loadModule('omega')" id="nav-omega">Omega 3 (System Coolant)</div>
             <div class="nav-item p-3 text-xs text-[#aaa]" onclick="loadModule('celactivo')" id="nav-celactivo">Celactivo (Cellular Ignition)</div>
             <div class="nav-item p-3 text-xs text-[#aaa]" onclick="loadModule('garlic')" id="nav-garlic">Garlic Plus (Vascular Defense)</div>
-            <div class="nav-item p-3 text-xs text-[#aaa]" onclick="loadModule('niteworks')" id="nav-niteworks">Niteworks (Nitric Oxide)</div>
-            <div class="nav-item p-3 text-xs text-[#aaa]" onclick="loadModule('guarana')" id="nav-guarana">N-R-G Guarana (Cognitive Sustenance)</div>
+            <div class="nav-item p-3 text-xs text-[#aaa]" onclick="loadModule('guarana')" id="nav-guarana">N-R-G Guarana (Sustained Focus)</div>
 
-            <div class="p-3 border-b border-t border-[#222] bg-[#111]">
-                <p class="text-[10px] mono text-white uppercase tracking-widest">Structural & Immunity</p>
+            <div class="p-4 border-b border-t border-line bg-[#111] sticky top-0 z-10">
+                <p class="text-[10px] mono text-[#666] uppercase tracking-widest">Structural & Recovery</p>
             </div>
             <div class="nav-item p-3 text-xs text-[#aaa]" onclick="loadModule('collagen')" id="nav-collagen">Collagen Plus (Tissue Elasticity)</div>
             <div class="nav-item p-3 text-xs text-[#aaa]" onclick="loadModule('calcium')" id="nav-calcium">Calcium Plus (Bone Matrix)</div>
             <div class="nav-item p-3 text-xs text-[#aaa]" onclick="loadModule('multi')" id="nav-multi">Multivitamin (Baseline Insurance)</div>
-
-            <div class="p-3 border-b border-t border-[#222] bg-[#111]">
-                <p class="text-[10px] mono text-white uppercase tracking-widest">H24 Sports Performance</p>
-            </div>
-            <div class="nav-item p-3 text-xs text-[#aaa]" onclick="loadModule('rspro')" id="nav-rspro">RS Pro (Muscle Synthesis)</div>
-            <div class="nav-item p-3 text-xs text-[#aaa]" onclick="loadModule('cr7')" id="nav-cr7">CR7 Drive (Electrolyte Matrix)</div>
+            <div class="nav-item p-3 text-xs text-[#aaa]" onclick="loadModule('rspro')" id="nav-rspro">RS Pro (Kinetic Synthesis)</div>
+            <div class="nav-item p-3 text-xs text-[#aaa]" onclick="loadModule('cr7')" id="nav-cr7">CR7 Drive (Cellular Hydration)</div>
         </aside>
 
-        <!-- MAIN CONTENT AREA -->
-        <section class="flex-1 bg-[#111] overflow-y-auto p-6 md:p-8 relative" id="module-display">
-            <!-- Content Injected via JS -->
+        <section class="flex-1 bg-[#0a0a0a] overflow-y-auto p-6 md:p-10 relative" id="module-display">
+            <!-- Dynamic Content Injected Here -->
         </section>
     </main>
 
     <script>
-        const database = {
+        const db = {
+            // ==========================================
+            // CLINICAL SCENARIOS & LOGIC GATES
+            // ==========================================
+            'gate_hungry': {
+                type: 'clinical', name: 'Logic Gate: "I am feeling hungry"', tag: 'CLIENT COMPLIANCE / NUTRITION DEFICIT', color: 'text-yellow-400',
+                context: 'The client is on the protocol but reports feeling hungry between meals or experiencing cravings.',
+                wolf: 'Hunger in the presence of caloric restriction often indicates a macronutrient imbalance, specifically a protein deficit. The body is signaling a lack of amino acids for cellular repair. Alternatively, it is a glycemic crash from an earlier off-protocol meal.',
+                shepherd: 'Your body isn\'t just asking for food; it\'s screaming for specific nutrients. We don\'t ignore that signal. We feed it.',
+                scripts: `
+                    <div class="p-3 bg-yellow-900/20 border-l-2 border-yellow-500 mb-3">
+                        <p class="text-[10px] mono text-yellow-500 uppercase mb-1">Copy-Paste Triage Script:</p>
+                        <p class="text-sm text-white font-medium">"CONGRATULATIONS! Your body is screaming for proper NUTRIENTS 💛. This is a great signal.</p>
+                        <p class="text-sm text-white font-medium mt-2">ADD ONE more scoop of F1 and ONE more scoop of PROTEIN to your shake 💛. BUILD MORE PROTEIN. Our biology, DNA, and cells need amino acids to repair and function, not just empty calories 💛."</p>
+                    </div>
+                `,
+                decision: 'Action: Increase F3 Protein by 1 scoop. If hunger persists, audit water intake (thirst masks as hunger) and verify they are not consuming hidden sugars causing insulin spikes.'
+            },
+            'logic_ra': {
+                type: 'clinical', name: 'Rheumatoid Arthritis (RA) Protocol', tag: 'AUTOIMMUNE / INFLAMMATION', color: 'text-purple-400',
+                context: 'Client presents with RA, joint pain, or is on corticosteroids (e.g., Prednisone).',
+                wolf: 'RA is autoimmune, not "wear and tear." 70% of the immune system is in the gut. Leaky gut triggers RA. Corticosteroids (Prednisone) prescribed for RA stop pain by shutting down the immune system but trigger the liver to dump glucose, causing insulin resistance (Steroid-Induced Diabetes). Omega-3s (EPA/DHA) convert into Resolvins to turn off inflammation.',
+                shepherd: 'We aren\'t treating your joints; we are fixing the gut where your immune system lives. Right now, your body is confused and attacking itself. We are going to calm it down.',
+                scripts: `
+                    <div class="p-3 bg-purple-900/20 border-l-2 border-purple-500 mb-3">
+                        <p class="text-[10px] mono text-purple-400 uppercase mb-1">The Omega-3 Medical Pivot:</p>
+                        <p class="text-sm text-white italic">"Ask your doctor, 'Can I take highly purified fish oil?' They will almost certainly say yes. When they do, we will deploy our Omega-3 to generate Resolvins and lubricate those joints safely."</p>
+                    </div>
+                `,
+                decision: 'MANDATORY: F1 must be tracked strictly to prevent steroid-induced glucose spikes. ALOE is critical to seal the leaky gut. OMEGA 3 is the primary anti-inflammatory agent.'
+            },
+            'logic_tofi': {
+                type: 'clinical', name: 'TOFI (Thin Outside, Fat Inside)', tag: 'METABOLIC SYNDROME', color: 'text-red-400',
+                context: 'Client has normal overall Body Fat / BMI, but high Visceral Fat (e.g., Level 10+).',
+                wolf: 'The most dangerous metabolic profile. Normal subcutaneous fat, but extreme organ adiposity. Driven by liver overload (fructose/alcohol) bypassing standard storage, or chronic cortisol (stress) specifically packing fat around internal organs as a survival mechanism. Masked by low skeletal muscle mass.',
+                shepherd: 'You have what we call a "Skinny Engine with a Choked Filter." Outwardly, your chassis looks perfectly fine. But internally, your Visceral Fat is at a Level 13. Your organs are suffocating in toxic grease.',
+                scripts: `
+                    <div class="p-3 bg-red-900/20 border-l-2 border-red-500 mb-3">
+                        <p class="text-[10px] mono text-red-400 uppercase mb-1">The Reality Check Script:</p>
+                        <p class="text-sm text-white italic">"This isn't about looking good in a mirror; you already do. This is about the fact that your body isn't storing fat under your skin where it's safe; it's storing it directly on your heart and liver. We need to clear this internal drag before it wrecks your liver enzymes."</p>
+                    </div>
+                `,
+                decision: 'Mandatory: Tea Mix (Metabolic Furnace) to mobilize visceral fat. Strict F1 protocol to cut fructose/alcohol load on the liver. Hardware training (Pilates) to build muscle to act as a glucose sink.'
+            },
+            'logic_edema': {
+                type: 'clinical', name: 'Collagen Edema (Swelling)', tag: 'LYMPHATIC / CELLULAR HYDRATION', color: 'text-blue-400',
+                context: 'Client reports swelling/water retention after consuming collagen.',
+                wolf: 'Retail collagens use sodium/artificial sweeteners, spiking insulin and forcing kidneys to retain water. Collagen is hydrophilic (water-loving). If introduced to a sluggish lymphatic system without massive hydration, fluid gets trapped in inflamed tissues acting like sponges.',
+                shepherd: 'Most commercial collagens are packed with cheap sodium fillers that make you swell. Ours is micro-hydrolyzed. But because collagen acts like a sponge to rebuild your joints, you must give it the water it needs, or it will pull water from your tissues and cause swelling.',
+                scripts: `
+                    <div class="p-3 bg-blue-900/20 border-l-2 border-blue-500 mb-3">
+                        <p class="text-[10px] mono text-blue-400 uppercase mb-1">The Clean Fuel Guarantee & Micro-Dosing:</p>
+                        <p class="text-sm text-white italic">"We are going to start you on a 'Micro-Dose'—half a scoop every other day. Let your lymphatic system adapt to processing the new amino acids. And you MUST hit 3 Liters of water daily, or the protocol stops."</p>
+                    </div>
+                `,
+                decision: 'Rule: Never start a highly inflamed client on full-dose collagen. Micro-dose (1/2 scoop) and enforce strict 3L water compliance.'
+            },
+
+            // ==========================================
+            // CORE ARCHITECTURE & PRODUCTS
+            // ==========================================
+            'f1': {
+                type: 'product', name: 'Formula 1 (Precision Fuel)', tag: 'CORE ARCHITECTURE', color: 'text-[#3de0b0]',
+                metrics: '99 kcal | 8.7g Protein | Low GI (15-23) | 13 Vits, 10 Minerals',
+                wolf: 'Optimizes glycemic load, restores nutrient-dense satiety without triggering an insulin response. Bypasses metabolic drag caused by standard heavy carbohydrate breakfasts.',
+                shepherd: 'This isn’t a "diet shake." It’s a precision fuel delivery system. It cuts out the noise of modern processed food so your body can actually absorb what it needs to perform in under 3 minutes.',
+                pubmed: '"We use Formula 1 as a precision-delivery system. Research in journals like Nutrition & Metabolism confirms that high-quality, protein-dense meal replacements actually outperform traditional whole-food diets for metabolic regulation and glucose control. Are you more interested in the label of the food, or the clinical outcome of your blood markers?"',
+                decision: 'Mandatory Foundation. Use standard F1 for 95% of clients. Use F1 Select for severe dairy/soy allergies or strict vegan compliance.'
+            },
             'tea': {
-                name: 'Tea Mix (Metabolic Furnace)',
-                tag: 'THERMOGENESIS & METABOLISM',
-                color: 'text-[#f0b429]',
-                bg: 'bg-yellow-900/20 border-yellow-900',
-                dosage: '1/2 tsp (1.7g) in 200-240ml hot/cold water.',
-                ingredients: 'Green Tea Extract (Catechins), Orange Pekoe, Hibiscus Flower, Cardamom. 6 kcal per serving.',
-                mnemonic: `<div class="bg-[#050505] border border-[#222] p-4 mt-4 rounded">
-                    <p class="text-[10px] uppercase text-[#f0b429] tracking-widest mb-2 font-bold">The A.B.C.D.E Memory Hook</p>
-                    <ul class="text-xs text-[#ddd] space-y-1 font-mono">
-                        <li><span class="text-white font-bold">A</span> - Antioxidant, Alkaline, Anti-aging</li>
-                        <li><span class="text-white font-bold">B</span> - Burn fat</li>
-                        <li><span class="text-white font-bold">C</span> - Cleansing</li>
-                        <li><span class="text-white font-bold">D</span> - Detox (Throw Rubbish)</li>
-                        <li><span class="text-white font-bold">E</span> - Energy</li>
-                    </ul>
-                    <p class="text-xs text-[#888] mt-3 italic">"Detox and throw rubbish. Repair and Replenish."</p>
-                </div>`,
-                wolf: 'Drives thermogenesis and provides sustained cognitive clarity by modulating catecholamine pathways. Rich in EGCG antioxidants, avoiding the adrenal crash of standard caffeine.',
-                shepherd: 'This provides clean, sustained energy. We aren\'t just "caffeinating" you; we’re turning up your metabolic furnace so you burn hotter, detox your system, and stay sharp all day.',
-                objection: '"I already drink coffee or energy drinks."<br><br><span class="text-white font-bold">Pivot:</span> "Coffee borrows energy from your adrenals for tomorrow, leaving you exhausted later. Our tea optimizes your engine to create its own energy today while cleansing the system."',
+                type: 'product', name: 'Tea Mix with Hibiscus', tag: 'METABOLIC FURNACE', color: 'text-yellow-400',
+                metrics: '6 kcal | Green Tea Extract | Orange Pekoe | Cardamom',
+                wolf: 'EGCG in Green Tea inhibits the COMT enzyme, which normally degrades catecholamines (norepinephrine). This sustains the thermogenic signal naturally, providing prolonged cognitive clarity without the harsh adrenal spike and crash of anhydrous caffeine.',
+                shepherd: 'This is clean, sustained energy. We aren\'t "caffeinating" you; we’re optimizing your metabolic furnace so you stay sharp all day, burn hotter, and detox the system.',
+                pubmed: `
+                    <div class="mb-3">
+                        <p class="text-[10px] text-yellow-500 uppercase mb-1 font-bold">The A.B.C.D.E Mnemonic (Client Explanation)</p>
+                        <ul class="text-xs text-white space-y-1 mono bg-[#050505] p-3 border border-[#222]">
+                            <li><span class="text-yellow-400 font-bold">A</span>ntioxidant, Alkaline, Anti-aging</li>
+                            <li><span class="text-yellow-400 font-bold">B</span>urn fat</li>
+                            <li><span class="text-yellow-400 font-bold">C</span>leansing</li>
+                            <li><span class="text-yellow-400 font-bold">D</span>etox (Throw Rubbish)</li>
+                            <li><span class="text-yellow-400 font-bold">E</span>nergy</li>
+                        </ul>
+                        <p class="text-[10px] text-[#888] mt-2 italic">"Detox and throw rubbish. Repair and Replenish."</p>
+                    </div>
+                    <p class="text-[10px] mono text-[#888] uppercase mb-1 mt-3">PubMed Defense (The No-Crash Logic):</p>
+                    <p class="text-sm text-white italic">"Coffee crashes your system because it spikes adrenaline and depletes your adrenals. Our Tea Mix uses EGCG to inhibit the enzyme that destroys your body's natural energy chemicals, giving you a smooth, sustained burn without the 3 PM burnout."</p>
+                `,
                 decision: 'Prescribe as the morning activator or pre-workout node. Essential for clients with high Visceral Fat.'
             },
             'aloe': {
-                name: 'Aloe Concentrate (Gut Rinse)',
-                tag: 'INTESTINAL REPAIR',
-                color: 'text-[#3de0b0]',
-                bg: 'bg-green-900/20 border-green-900',
-                dosage: '3 capfuls (15ml) mixed with 120ml water. Drink 2x daily (before/after meals).',
-                ingredients: 'Aloe Barbadensis concentrate (72.3mg), Matricaria Chamomilla extract (3.8mg).',
-                mnemonic: '',
-                wolf: 'Acts as a soothing agent for the mucosal lining of the small intestine. Minimizes gut inflammation, unblocking the villi, which directly increases the absorption rate of the Formula 1 nutrient payload.',
+                type: 'product', name: 'Herbal Aloe Concentrate', tag: 'INTESTINAL REPAIR', color: 'text-[#3de0b0]',
+                metrics: 'Aloe Barbadensis | Matricaria Chamomilla',
+                wolf: 'Clinical-grade Aloe acts as an anti-inflammatory for the mucosal lining. Crucially, Herbalife uses a premium filtration process to completely remove the \'Aloin\' compound (the harsh laxative element), ensuring cellular healing without gastrointestinal distress or laxative dependency.',
                 shepherd: 'Your gut is the factory floor. If it\'s inflamed, you’re pouring premium fuel into a broken tank. Aloe is the "rinse cycle" that cleans the engine so you actually absorb the nutrients.',
-                objection: '"Isn\'t this just expensive flavored water?"<br><br><span class="text-white font-bold">Pivot:</span> "If it were just flavored water, your gut health markers wouldn\'t stabilize in 14 days. We use this to modulate internal inflammation. Without it, you are wasting 30% of the nutrition you consume."',
-                decision: 'Non-negotiable for all Phase 1 (Foundational Reset) clients. Primary node for bloating or 3 PM crashes.'
-            },
-            'f1': {
-                name: 'Formula 1 (Precision Fuel)',
-                tag: 'CORE ARCHITECTURE',
-                color: 'text-white',
-                bg: 'bg-[#333] border-[#555]',
-                dosage: '2 heaping tbsp (25g) in 240ml of water/milk. Replace breakfast.',
-                ingredients: 'Soy protein isolate (8.7g), 13 Vitamins, 10 Minerals. Low GI (15-23). 99 kcal.',
-                mnemonic: '',
-                wolf: 'Optimizes glycemic load, restores nutrient-dense satiety without triggering an insulin response. Bypasses metabolic drag caused by standard heavy carbohydrate breakfasts.',
-                shepherd: 'This isn’t a "diet shake." It’s a precision fuel delivery system. It cuts out the noise of modern processed food so your body can actually absorb what it needs to perform in under 3 minutes.',
-                objection: '"I prefer eating real, whole foods instead of processed shakes."<br><br><span class="text-white font-bold">PubMed Pivot:</span> "I agree with the philosophy of whole foods. But peer-reviewed studies in Nutrition & Metabolism show that structured, high-protein meal replacements outperform traditional dieting for glucose control. Are you more interested in the label of the food, or the clinical outcome of your blood markers?"',
-                decision: 'Mandatory Foundation. Use standard F1 for 95% of clients.'
+                pubmed: '"Is this just expensive juice? No. Clinical-grade Aloe acts as an anti-inflammatory for your intestinal villi. Furthermore, we use a premium filtration process to completely remove the \'Aloin\' compound (the harsh laxative part of the plant), ensuring you get the cellular healing without the gastrointestinal distress other brands cause."',
+                decision: 'Non-negotiable for Phase 1. Deploy for 3 PM crashes, bloating, or any autoimmune (RA) profile.'
             },
             'f3': {
-                name: 'Formula 3 (Structural Armor)',
-                tag: 'MUSCLE PRESERVATION',
-                color: 'text-[#3b82f6]',
-                bg: 'bg-blue-900/20 border-blue-900',
-                dosage: '1 to 4 servings (1 tbsp / 6g) daily. Mix into F1.',
-                ingredients: 'Soy Protein Isolate, Whey Protein Concentrate. 5g Protein per serving. 20 kcal.',
-                mnemonic: '',
-                wolf: 'Provides a complete amino acid profile (fast-absorbing whey + sustained-release soy) to prevent muscle catabolism during caloric deficit. Protects the Basal Metabolic Rate (BMR).',
+                type: 'product', name: 'Formula 3 Protein', tag: 'STRUCTURAL ARMOR', color: 'text-[#3b82f6]',
+                metrics: '20 kcal | 5g Protein | Soy Isolate + Whey Concentrate',
+                wolf: 'Provides a complete amino acid profile to prevent muscle catabolism during caloric deficit. Protects the Basal Metabolic Rate (BMR) from dropping.',
                 shepherd: 'Think of this as structural armor for your engine. When we drop your calories to burn fat, your body will try to eat its own muscle. This stops that from happening.',
-                objection: '"I don\'t want to get bulky."<br><br><span class="text-white font-bold">Pivot:</span> "You don\'t get bulky by drinking protein; you get bulky by lifting heavy iron for hours. This simply keeps your metabolism from slowing down while we strip away the visceral fat."',
-                decision: 'Review Client Scan: If Skeletal Muscle % is low, F3 is non-negotiable. Add 1-2 scoops to F1.'
+                pubmed: '"I don\'t want to get bulky." -> "You don\'t get bulky by drinking protein; you get bulky by lifting heavy iron in a caloric surplus. This simply provides the amino acids required to keep your metabolism from shutting down while we strip away the visceral fat."',
+                decision: 'Review Client Scan: If Skeletal Muscle % is below normal, F3 is non-negotiable. Add 1-2 scoops to every F1 shake.'
             },
-            
+
+            'niteworks': {
+                type: 'product', name: 'Niteworks', tag: 'VASCULAR OPTIMIZATION', color: 'text-purple-400',
+                metrics: 'L-Arginine | L-Citrulline | L-Taurine | Vit C & E',
+                wolf: 'Formulated by Nobel Laureate Dr. Louis Ignarro. L-Citrulline bypasses the liver and converts to Arginine in the kidneys, creating a time-release, sustained Nitric Oxide (NO) production effect all night. Relaxes endothelial lining, widening blood vessels.',
+                shepherd: 'Between 2 AM and 6 AM, your body stops producing Nitric Oxide. Your veins stiffen. This is a Nobel Prize-winning formula you drink before bed; it acts as a "night watchman," forcing your veins to stay open and elastic all night so nutrients actually reach your tissues.',
+                pubmed: `
+                    <div class="mb-3">
+                        <p class="text-[10px] text-purple-400 uppercase mb-1 font-bold">AETS Competitor Script (If they take standard L-Arginine)</p>
+                        <p class="text-xs text-white italic bg-[#050505] p-3 border border-[#222]">"Your current Arginine is Version 1.0. Standalone L-Arginine has a very short half-life because the liver chews it up rapidly. The guy who won the Nobel Prize found that if you don't bind Arginine with L-Citrulline and L-Taurine, NO production drops off a cliff. He patented the exact ratio for a 'sustained release' protocol that bypasses the liver."</p>
+                    </div>
+                `,
+                decision: 'Deploy for High-Value Operators over 35, high-stress executives, or couples on a Fertility Journey (to optimize blood flow).'
+            },
             'collagen': {
-                name: 'Collagen Plus (Tissue Elasticity)',
-                tag: 'EXTRACELLULAR REPAIR',
-                color: 'text-[#ff6b55]',
-                bg: 'bg-[#ff6b55]/20 border-[#ff6b55]',
-                dosage: '2 spoons (10g) with 120-240ml water. Drink on an empty stomach.',
-                ingredients: '5000mg Fish Hydrolyzed Collagen, Coenzyme Q10, Vitamin C, Biotin, Zinc.',
-                mnemonic: `<div class="bg-[#050505] border border-[#222] p-4 mt-4 rounded">
-                    <p class="text-[10px] uppercase text-[#ff6b55] tracking-widest mb-2 font-bold">The Peptide Matrix</p>
-                    <ul class="text-xs text-[#ddd] space-y-1 font-mono">
-                        <li>Contains <span class="text-white font-bold">Peptide 1 & Peptide 2</span>.</li>
-                        <li>High bioavailability compared to standard collagen.</li>
-                        <li>Vit C + CoQ10 acts as the "cement" that holds the collagen bricks together.</li>
-                    </ul>
-                </div>`,
-                wolf: 'Replenishes extracellular matrix proteins. Peptides 1 and 2 target skin and tissue elasticity. CoQ10 and Vitamin C act as co-factors for collagen synthesis, repairing vascular integrity.',
-                shepherd: 'Collagen is the glue that holds your physical chassis together. We inject this to restore your skin’s elasticity, lubricate joints, and rebuild your internal connective tissues.',
-                objection: '"Are collagen drinks just a beauty trend?"<br><br><span class="text-white font-bold">Pivot:</span> "The beauty industry hijacked it, but collagen is fundamentally structural. It repairs your blood vessels, tendons, and gut lining. The aesthetic \'glow\' is just a byproduct of internal health."',
-                decision: 'Deploy for anti-aging protocols, joint support, and the Glow+ package. *Note: For clients with a history of edema (swelling), micro-dose and monitor fluid intake.*'
+                type: 'product', name: 'Collagen Plus Powder', tag: 'TISSUE ELASTICITY', color: 'text-[#ff6b55]',
+                metrics: '5000mg Fish Hydrolyzed Collagen | CoQ10 | Vit C',
+                wolf: 'Replenishes extracellular matrix proteins utilizing advanced Peptide 1 and Peptide 2 for superior bioavailability. CoQ10 and Vitamin C act as essential co-factors for collagen synthesis, repairing vascular integrity and skin elasticity.',
+                shepherd: 'Collagen is the glue that holds your physical chassis together. After 25, your body stops making it. We inject this to restore your skin’s elasticity, lubricate joints, and rebuild your internal connective tissues.',
+                pubmed: '"The beauty industry hijacked collagen, but it is fundamentally structural. It repairs your blood vessels, tendons, and gut lining. Our specific formula uses Hydrolyzed Fish Peptides combined with CoQ10—the exact \'cement\' required to bind the collagen bricks together in your body."',
+                decision: 'Bundle with the "Glow+" or "Flexi+" packages. Highly effective for joint friction. Use Edema protocol if swelling occurs.'
             },
             'celactivo': {
-                name: 'Celactivo (Cellular Ignition)',
-                tag: 'METABOLIC CATALYST',
-                color: 'text-[#3de0b0]',
-                bg: 'bg-green-900/20 border-green-900',
-                dosage: '1 capsule, 3 times daily after meals.',
-                ingredients: 'Alpha Lipoic Acid (100mg), Aloe Vera Concentrate, Vitamins B1, B2, B6.',
-                mnemonic: '',
+                type: 'product', name: 'Celactivo', tag: 'CELLULAR IGNITION', color: 'text-[#3de0b0]',
+                metrics: 'Alpha Lipoic Acid (100mg) | Aloe Vera | B-Vitamins',
                 wolf: 'Restores intracellular antioxidants (Vit C/E). Alpha Lipoic Acid and B-Vitamins act as crucial coenzymes in the Krebs cycle, catalyzing the conversion of macronutrients into ATP (cellular energy).',
-                shepherd: 'This is the spark plug for your cells. It forces your body to convert the food you eat directly into energy rather than storing it as fat, while protecting your cells from oxidative stress.',
-                objection: '"I already take a multivitamin."<br><br><span class="text-white font-bold">Pivot:</span> "A multivitamin provides raw materials; Celactivo provides the ignition. Alpha Lipoic Acid operates deep inside the mitochondria to actually burn the fuel you consume."',
+                shepherd: 'This is the spark plug for your cells. It forces your body to convert the food you eat directly into energy rather than storing it as fat, while protecting your cells from extreme oxidative stress.',
+                pubmed: '"A multivitamin provides raw materials; Celactivo provides the ignition. Alpha Lipoic Acid operates deep inside the mitochondria to actually burn the fuel you consume."',
                 decision: 'Prescribe for clients experiencing extreme lethargy, metabolic plateau, or high oxidative stress.'
             },
             'garlic': {
-                name: 'Garlic Plus (Vascular Defense)',
-                tag: 'CARDIOVASCULAR HEALTH',
-                color: 'text-white',
-                bg: 'bg-[#444] border-[#666]',
-                dosage: '1 tablet once daily with a meal.',
-                ingredients: 'Garlic Extract (Allicin) 600mg, Vitamin C 70mg. Enteric-coated.',
-                mnemonic: '',
-                wolf: 'Allicin acts as a potent vasodilator and immune modulator. Enteric coating bypasses gastric acid for intestinal absorption, maximizing bioavailability while eliminating halitosis (garlic breath).',
-                shepherd: 'Think of this as a natural blood thinner and immune shield. It supports healthy circulation, helping to clear the vascular highways so nutrients and oxygen reach your muscles efficiently.',
-                objection: '"I cook with lots of garlic already."<br><br><span class="text-white font-bold">Pivot:</span> "Cooking destroys Allicin, the active compound that actually protects your heart. This provides a clinical, enteric-coated dose that bypasses your stomach acid so it absorbs directly into your bloodstream."',
+                type: 'product', name: 'Garlic Plus', tag: 'CARDIOVASCULAR HEALTH', color: 'text-white',
+                metrics: 'Garlic Extract (Allicin) 600mg | Enteric-Coated',
+                wolf: 'Allicin acts as a potent vasodilator and immune modulator. The enteric coating is critical: it bypasses gastric acid for intestinal absorption, maximizing bioavailability while eliminating halitosis (garlic breath).',
+                shepherd: 'Think of this as a natural blood thinner and immune shield. It clears the vascular highways so nutrients and oxygen reach your muscles efficiently.',
+                pubmed: '"I cook with lots of garlic." -> "Cooking destroys Allicin, the active compound that protects your heart. This provides a clinical, enteric-coated dose that bypasses your stomach acid so it absorbs directly into your bloodstream."',
                 decision: 'Mandatory for clients over 40, those with high Visceral Fat, or poor circulation.'
             },
+
             'calcium': {
-                name: 'Calcium Plus (Bone Matrix)',
-                tag: 'SKELETAL INTEGRITY',
-                color: 'text-[#3b82f6]',
-                bg: 'bg-blue-900/20 border-blue-900',
-                dosage: '1 tablet, 3 times a day with meals.',
-                ingredients: 'Calcium (300mg), Magnesium (65mg), Vitamin D3 (39 IU), Zinc, Copper.',
-                mnemonic: '',
+                type: 'product', name: 'Calcium Plus', tag: 'BONE MATRIX', color: 'text-[#3b82f6]',
+                metrics: 'Calcium (300mg) | Magnesium (65mg) | Vitamin D3',
                 wolf: 'A complete mineral matrix. Calcium cannot be absorbed efficiently without Vitamin D3 and Magnesium. This complex ensures calcium is deposited into the skeletal structure, not calcified in the arteries.',
                 shepherd: 'This is the concrete foundation of your physical frame. We don’t just give you raw calcium; we give you the Magnesium and Vitamin D "contractors" required to actually build the bone.',
-                objection: '"I drink plenty of milk."<br><br><span class="text-white font-bold">Pivot:</span> "Dairy causes systemic inflammation for many adults. This provides a precise, inflammation-free matrix of Calcium + Vitamin D + Magnesium, ensuring the minerals go to your bones, not your arteries."',
+                pubmed: '"Dairy causes systemic inflammation for many adults. This provides a precise, inflammation-free matrix of Calcium + Vitamin D + Magnesium, ensuring the minerals go to your bones, not your arteries."',
                 decision: 'Essential for female clients over 35, athletes, and those lacking bone mineral density.'
             },
-            
             'multi': {
-                name: 'Multivitamin (Baseline Insurance)',
-                tag: 'MICRONUTRIENT OPTIMIZATION',
-                color: 'text-[#f0b429]',
-                bg: 'bg-yellow-900/20 border-yellow-900',
-                dosage: '1 tablet, 3 times a day with meals.',
-                ingredients: 'Over 20 essential vitamins and minerals including Vitamin A, C, D, E, and B-Complex.',
-                mnemonic: '',
+                type: 'product', name: 'Multivitamin', tag: 'MICRONUTRIENT OPTIMIZATION', color: 'text-yellow-400',
+                metrics: '20+ essential vitamins and minerals',
                 wolf: 'Fills the micronutrient gaps that cause metabolic drag. Essential for enzymatic reactions, immune support, and sustained energy metabolism across the 24-hour cycle.',
                 shepherd: 'This is your biological insurance policy. Modern food is over-processed and under-nourished. This guarantees your engine has every tiny component it needs to run without breaking down.',
-                objection: '"My diet is very healthy; I get my vitamins from food."<br><br><span class="text-white font-bold">Pivot:</span> "Soil depletion over the last 50 years means a bowl of spinach today has a fraction of the nutrients it used to. This isn\'t a replacement for a good diet; it\'s the guarantee that your cells aren\'t starving."',
+                pubmed: '"Soil depletion over the last 50 years means a bowl of spinach today has a fraction of the nutrients it used to. This isn\'t a replacement for a good diet; it\'s the guarantee that your cells aren\'t starving."',
                 decision: 'Base camp requirement for all clients to ensure systemic optimization.'
             },
             'guarana': {
-                name: 'N-R-G Guarana (Cognitive Sustenance)',
-                tag: 'SUSTAINED ALERTNESS',
-                color: 'text-[#ff6b55]',
-                bg: 'bg-[#ff6b55]/20 border-[#ff6b55]',
-                dosage: '1/2 tsp (1g) in 180ml hot or cold water. 1-2 times daily.',
-                ingredients: 'Guarana Seed Extract (Paullinia cupana), Orange Pekoe, Green Tea Extract. 40mg caffeine.',
-                mnemonic: '',
-                wolf: 'Guaranine (the caffeine in Guarana) is released slowly due to the seed\'s fatty acid profile. It blocks adenosine receptors for prolonged periods, providing mental acuity without the rapid spike-and-crash of anhydrous caffeine.',
-                shepherd: 'This provides a slow, steady release of energy directly to your brain. It’s perfect for intense focus blocks or studying, giving you alertness without the jittery heart palpitations.',
-                objection: '"I avoid caffeine because it makes me jittery."<br><br><span class="text-white font-bold">Pivot:</span> "Standard caffeine hits your bloodstream all at once. Guarana seed releases the energy slowly over hours. It feels like natural alertness, not a chemical high."',
+                type: 'product', name: 'N-R-G Guarana', tag: 'SUSTAINED ALERTNESS', color: 'text-orange-400',
+                metrics: 'Guarana Seed Extract | 40mg caffeine',
+                wolf: 'Guaranine is released slowly due to the seed\'s fatty acid profile. It blocks adenosine receptors for prolonged periods, providing mental acuity without the rapid spike-and-crash of anhydrous caffeine.',
+                shepherd: 'This provides a slow, steady release of energy directly to your brain. It gives you alertness and focus without the jittery heart palpitations of an espresso shot.',
+                pubmed: '"Standard caffeine hits your bloodstream all at once. Guarana seed releases the energy slowly over hours. It feels like natural alertness, not a chemical high."',
                 decision: 'Prescribe for executives, students, or operators needing prolonged cognitive endurance.'
             },
             'rspro': {
-                name: 'H24 RS Pro (Muscle Synthesis)',
-                tag: 'KINETIC RECOVERY',
-                color: 'text-white',
-                bg: 'bg-[#333] border-[#555]',
-                dosage: 'Mix 2 scoops with water immediately post-workout (within 30 mins).',
-                ingredients: 'High-grade Whey and Casein protein blend, L-Glutamine, BCAAs.',
-                mnemonic: '',
-                wolf: 'Provides a biphasic protein delivery system. Whey provides immediate amino acid spikes to halt catabolism, while Casein ensures a prolonged trickle of aminos for deep tissue repair. High L-Glutamine protects the immune system post-exertion.',
-                shepherd: 'This is the immediate repair mortar for the bricks you just broke in the gym. If you don\'t take this within 30 minutes of training, you are wasting your workout by failing to rebuild the muscle.',
-                objection: '"Can I just drink Formula 1 after my workout?"<br><br><span class="text-white font-bold">Pivot:</span> "F1 is a meal replacement designed for steady energy. RS Pro is pure, rapid-absorbing muscle repair designed to flood torn muscle fibers instantly. Different tools for different jobs."',
+                type: 'product', name: 'H24 RS Pro', tag: 'KINETIC RECOVERY', color: 'text-[#888]',
+                metrics: 'Whey & Casein blend | L-Glutamine | BCAAs',
+                wolf: 'Provides a biphasic protein delivery system. Whey provides immediate amino acid spikes to halt catabolism, while Casein ensures a prolonged trickle of aminos for deep tissue repair. L-Glutamine protects the immune system post-exertion.',
+                shepherd: 'This is the immediate repair mortar for the bricks you just broke in the gym. If you don don\'t take this within 30 minutes of training, you are failing to rebuild the muscle.',
+                pubmed: '"Can I just drink F1?" -> "F1 is a meal replacement designed for steady energy. RS Pro is pure, rapid-absorbing muscle repair designed to flood torn muscle fibers instantly. Different tools for different jobs."',
                 decision: 'Mandatory for clients undergoing heavy Kinetic/Pilates hypertrophy phases.'
             },
             'cr7': {
-                name: 'H24 CR7 Drive (Electrolyte Matrix)',
-                tag: 'INTRA-WORKOUT HYDRATION',
-                color: 'text-[#ff4444]',
-                bg: 'bg-red-900/20 border-red-900',
-                dosage: 'Mix 1 scoop with 250ml water during exercise.',
-                ingredients: '4-Carb matrix, Magnesium, Potassium, Sodium, Vitamin B12. Acai Berry flavor.',
-                mnemonic: '',
+                type: 'product', name: 'H24 CR7 Drive', tag: 'INTRA-WORKOUT HYDRATION', color: 'text-red-500',
+                metrics: '4-Carb matrix | Magnesium | Potassium | Acai Berry',
                 wolf: 'Advanced hypotonic hydration. Combines multiple carbohydrate sources for rapid gastric emptying and sustained ATP production. Replaces critical electrolytes lost via sweat without artificial dyes.',
                 shepherd: 'This is the intra-workout coolant that keeps your engine from overheating. It forces water and electrolytes directly into your cells while you train, so you don\'t crash mid-session.',
-                objection: '"I just drink 100 Plus or Gatorade."<br><br><span class="text-white font-bold">Pivot:</span> "Commercial sports drinks are loaded with high-fructose corn syrup and artificial dyes. CR7 uses a precise, 4-carb blend and natural Acai to hydrate cells without spiking your insulin."',
+                pubmed: '"Commercial sports drinks are loaded with high-fructose corn syrup and artificial dyes. CR7 uses a precise, 4-carb blend and natural Acai to hydrate cells without spiking your insulin."',
                 decision: 'Prescribe for endurance athletes or clients sweating heavily in Kinetic sessions.'
             },
-            'niteworks': {
-                name: 'Niteworks (Nitric Oxide)',
-                tag: 'VASCULAR OPTIMIZATION',
-                color: 'text-[#3b82f6]',
-                bg: 'bg-blue-900/20 border-blue-900',
-                dosage: '1 scoop (5g) in 180ml water at night before bed.',
-                ingredients: 'L-Arginine, L-Citrulline, L-Taurine, Vitamin C, Vitamin E, Folic Acid.',
-                mnemonic: '',
-                wolf: 'Stimulates the endothelial production of Nitric Oxide (NO). Promotes vasodilation, reducing blood pressure and increasing oxygen delivery to tissues during the nocturnal recovery phase.',
-                shepherd: 'This widens the vascular highways inside your body while you sleep. It takes the pressure off your heart, ensuring you wake up fully recovered, oxygenated, and ready to perform.',
-                objection: '"I take blood pressure meds."<br><br><span class="text-white font-bold">Pivot:</span> "Always consult your doctor. But remember: meds force a chemical change; Niteworks simply provides your body with the raw amino acids it naturally needs to keep arteries flexible."',
-                decision: 'Deploy for High-Value Operators over 35, high-stress executives, and athletes.'
+            'omega': {
+                type: 'product', name: 'Omega 3 Fish Oil', tag: 'SYSTEM COOLANT', color: 'text-blue-500',
+                metrics: 'EPA | DHA | Vitamin E',
+                wolf: 'High-grade marine lipids that modulate systemic inflammation pathways (cytokines). Essential for joint lubrication, lipid profiling, and cognitive maintenance. EPA/DHA convert to anti-inflammatory Resolvins.',
+                shepherd: 'Think of Omega 3 as the coolant for your engine. It reduces the systemic heat (inflammation) caused by modern stress, protecting your brain and lubricating your joints.',
+                pubmed: '"Can\'t I just eat fish?" -> "Absolutely, if you can guarantee eating deep-sea, wild-caught salmon 4 days a week without heavy metal toxicity. For the rest of us, this is the most efficient, purified way to guarantee our biological coolant levels are met."',
+                decision: 'Mandatory for RA protocols, high stress, and joint inflammation.'
             }
         };
 
         function loadModule(id) {
-            // Update UI Navigation state
             document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
             document.getElementById(`nav-${id}`).classList.add('active');
 
-            const data = database[id];
+            const data = db[id];
             const display = document.getElementById('module-display');
+            
+            let headerTagColor = data.type === 'clinical' ? 'bg-purple-900/20 text-purple-400 border-purple-900' : 'bg-[#222] text-[#888] border-[#333]';
 
             display.innerHTML = `
                 <div class="max-w-3xl mx-auto fade-in pb-10">
                     
-                    <!-- Header Data -->
+                    <!-- Header -->
                     <div class="mb-6 border-b border-[#333] pb-6">
-                        <span class="inline-block px-2 py-1 text-[9px] mono uppercase tracking-widest ${data.bg} ${data.color} rounded mb-3 border">${data.tag}</span>
-                        <h2 class="text-3xl font-bold uppercase tracking-tighter text-white mb-2">${data.name}</h2>
-                        
-                        <div class="bg-[#050505] border border-[#222] p-4 mt-4 rounded">
-                            <p class="text-[10px] text-[#666] uppercase mb-1 font-bold">Dosage & Application</p>
-                            <p class="text-xs text-[#ccc] mb-4">${data.dosage}</p>
-                            <p class="text-[10px] text-[#666] uppercase mb-1 font-bold">Active Ingredients</p>
-                            <p class="text-xs text-[#ccc]">${data.ingredients}</p>
-                        </div>
-                        ${data.mnemonic}
+                        <span class="inline-block px-2 py-1 text-[9px] mono uppercase tracking-widest ${headerTagColor} rounded mb-3 border">${data.tag}</span>
+                        <h2 class="text-3xl font-bold uppercase tracking-tighter text-white mb-2 ${data.color}">${data.name}</h2>
+                        ${data.metrics ? `<p class="text-[10px] mono text-[#888]">METRICS: ${data.metrics}</p>` : ''}
+                        ${data.context ? `<p class="text-sm text-[#aaa] mt-3 italic bg-[#111] p-3 border-l-2 border-[#444]">CONTEXT: ${data.context}</p>` : ''}
                     </div>
 
-                    <!-- Core Doctrines -->
+                    <!-- Core Intelligence -->
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-                        <div class="bg-[#050505] border border-[#222] p-5 rounded-lg relative overflow-hidden">
+                        <div class="bg-[#111] border border-[#222] p-5 rounded relative overflow-hidden">
                             <div class="absolute top-0 left-0 w-1 h-full bg-[#444]"></div>
-                            <h3 class="text-[10px] font-bold uppercase tracking-widest text-[#888] mb-2">The Wolf (Bio-Mechanism)</h3>
+                            <h3 class="text-[10px] font-bold uppercase tracking-widest text-[#888] mb-2 flex items-center gap-2">
+                                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
+                                The Wolf (Bio-Mechanism)
+                            </h3>
                             <p class="text-xs text-[#ccc] leading-relaxed">${data.wolf}</p>
                         </div>
-                        <div class="bg-[#050505] border border-[#222] p-5 rounded-lg relative overflow-hidden">
+                        <div class="bg-[#111] border border-[#222] p-5 rounded relative overflow-hidden">
                             <div class="absolute top-0 left-0 w-1 h-full bg-[#3de0b0]"></div>
-                            <h3 class="text-[10px] font-bold uppercase tracking-widest text-[#3de0b0] mb-2">The Shepherd (Translation)</h3>
+                            <h3 class="text-[10px] font-bold uppercase tracking-widest text-[#3de0b0] mb-2 flex items-center gap-2">
+                                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
+                                The Shepherd (Translation)
+                            </h3>
                             <p class="text-xs text-white leading-relaxed italic">"${data.shepherd}"</p>
                         </div>
                     </div>
 
-                    <!-- Objection Handling -->
-                    <div class="bg-gradient-to-r from-[#111] to-[#0a0a0a] border border-[#333] p-5 rounded-lg mb-6">
+                    <!-- Scripts & PubMed -->
+                    <div class="bg-gradient-to-r from-[#111] to-[#0a0a0a] border border-[#333] p-5 rounded mb-6">
                         <div class="flex items-center gap-2 mb-3">
-                            <h3 class="text-[10px] font-bold uppercase tracking-widest text-accent-blue">S-Rank Objection Handler</h3>
+                            <h3 class="text-[10px] font-bold uppercase tracking-widest text-[#f0b429]">S-Rank Objection Handler / Script</h3>
                         </div>
                         <div class="pl-3 border-l-2 border-[#555]">
-                            <p class="text-xs text-[#aaa] italic mb-2">${data.objection}</p>
+                            <p class="text-xs text-[#ddd] leading-relaxed">${data.pubmed || data.scripts}</p>
                         </div>
                     </div>
 
-                    <!-- Logic Gate -->
+                    <!-- Decision Gate -->
                     <div class="border-t border-[#222] pt-5">
-                        <h3 class="text-[10px] font-bold uppercase tracking-widest text-[#666] mb-2">Pipeline Placement (Decision Logic)</h3>
-                        <div class="bg-[#1a1a1a] p-3 rounded text-xs text-[#ddd] border border-[#333]">
+                        <h3 class="text-[10px] font-bold uppercase tracking-widest text-[#666] mb-2">Pipeline Placement & Action Logic</h3>
+                        <div class="bg-[#1a1a1a] p-3 rounded text-xs text-white font-medium border border-[#333]">
                             ${data.decision}
                         </div>
                     </div>
@@ -329,8 +341,8 @@
             `;
         }
 
-        // Initialize view with Tea Mix as requested
-        loadModule('tea');
+        // Initialize view with Hungry Triage as requested
+        loadModule('gate_hungry');
     </script>
 </body>
 </html>
