@@ -1,0 +1,119 @@
+{
+  "name": "Sovereign Fuel OS — The M.O.E. Group",
+  "version": "2.0",
+  "day": [
+    {
+      "slot": "Wake up (empty stomach)",
+      "items": [
+        "3 caps Aloe + 300 ml warm water (coats the stomach before tea or shake)",
+        "Collagen: 2 spoons (10 g); 1 scoop micro-dose only with active swelling"
+      ]
+    },
+    {
+      "slot": "Breakfast (System Anchor Shake)",
+      "items": [
+        "3 flat spoons F1 + 2 scoops F3 + 1 scoop Active Fiber Complex in 400 ml cold water (never hot)",
+        "About 145 kcal, 19-20 g protein, 15 g carbs, 9 g sugar, 8 g fibre, 1 g fat, GI 15-23",
+        "Pills with breakfast: Multivitamin, Calcium, Celactivo (2 a day: breakfast and lunch); Omega-3 and Garlic if prescribed",
+        "If Magic Number is 1500+: 3-4 boiled egg whites after the shake"
+      ]
+    },
+    {
+      "slot": "Lunch (Lean Hardware Meal, chewed)",
+      "items": [
+        "1/2 to 1 cup complex carbs (rice, quinoa)",
+        "1 cup fibrous greens",
+        "1-2 palm-sized portions lean protein (fish, chicken)",
+        "No red meat (beef, lamb, pork) in Phase 1",
+        "Pills with lunch: Multivitamin, Calcium, Celactivo"
+      ]
+    },
+    {
+      "slot": "Tea time (4:00 pm, final caffeine)",
+      "items": [
+        "1 tsp Tea in 500 ml warm water, sipped over 30 minutes (about 170 mg caffeine at 1 tsp)",
+        "Optional 1/2 tsp Guarana (about 40 mg); nothing caffeinated after 4:00 pm"
+      ]
+    },
+    {
+      "slot": "Dinner (before 7:00 pm)",
+      "items": [
+        "1/2 cup green vegetables",
+        "1 palm-sized lean protein",
+        "Limit sodium and heavy carbs; no energy pills at dinner"
+      ]
+    },
+    {
+      "slot": "Night",
+      "items": [
+        "Niteworks: 2 scoops (10 g) in 300 ml cold water (if prescribed)"
+      ]
+    },
+    {
+      "slot": "All day",
+      "items": [
+        "Water to target (0.06 L per kg)",
+        "ImmuLift: 1 sachet a day in water (if prescribed)"
+      ]
+    }
+  ],
+  "rules": [
+    "A shake that carries the full nutrients (F1 + F3 + fibre) is a real meal: the professional's time-saver. Never frame shakes or blended food as the problem. The villain is sugar without protein or fibre (fruit smoothies, sweet drinks, carb-only plates).",
+    "Breakfast is the System Anchor Shake. Lunch is always chewed: the Lean Hardware Meal. M.O.E. does not advocate 100% liquid diets.",
+    "The 3 pm crash protocol: protein-anchored breakfast shake, a chewed lean lunch, the 4:00 pm tea as the last caffeine, water to target.",
+    "Hunger is answered with protein and water (+1 scoop F3), not willpower.",
+    "The call to action is: comment START (or OPERATOR). That leads to the FORMOH Audit, a 15-minute Strategy Calibration Call, then the Sovereign Health Protocol (Phase 1: days 1-14; Phase 2: days 15-90).",
+    "Public content uses the client-layer claims only: no disease, treatment, detox, toxin, fat-oxidation or 'firewall' claims, and no protocol doses above the label. Mention products by their protocol role unless the source names them.",
+    "Never cite the Nutrition Journal 2010 meal-replacement trial as F1 evidence (it tested Medifast), and never quote a % for the afternoon dip without a named study."
+  ],
+  "program": {
+    "name": "The Sovereign Health Protocol",
+    "phases": [
+      "Phase 1: The Foundational Reset (days 1-14): gut and circadian reset",
+      "Phase 2: Fuel System Architecture (days 15-90): Magic Number adherence"
+    ],
+    "price": "RM 1,600 consultation fee, waived with a Home Armory purchase through the Healthbar Node",
+    "signup": [
+      "Social content hook",
+      "Comment or reply START or OPERATOR",
+      "FORMOH Audit (digital qualifier)",
+      "15-minute Strategy Calibration Call (scan review)",
+      "Deploy the Fuel Protocol and products"
+    ]
+  },
+  "exclusions": [
+    "Pregnant or nursing (without OBGYN clearance)",
+    "Chronic kidney disease stage 3-5",
+    "Active cancer treatment",
+    "On blood thinners (e.g. warfarin): doctor first for Omega-3 or Garlic Plus"
+  ],
+  "caffeine": {
+    "tea": "~85 mg per 1/2 tsp",
+    "guarana": "~40 mg per 1/2 tsp",
+    "rule": "Nothing caffeinated after 4:00 pm"
+  },
+  "formulas": {
+    "magicNumber": "BMR x activity (1.2 sedentary, 1.375 lightly active) - 500 kcal, floor 1000 kcal",
+    "protein": "1.2-1.5 g per kg body weight",
+    "water": "0.06 L per kg body weight",
+    "ageGap": "Metabolic Age (scan) - real age",
+    "visceralFatAlert": "10 or more (safe range quoted as 2-4)"
+  },
+  "doses": {
+    "f1": "3 flat spoons in 400 ml cold water",
+    "tea": "1 tsp in 500 ml warm water",
+    "aloe": "3 caps in 300 ml warm water",
+    "niteworks": "2 scoops (10 g)",
+    "collagen": "2 spoons (10 g); 1 scoop with active edema",
+    "pills": "Multivitamin, Calcium, Celactivo: 2 a day (breakfast, lunch)"
+  },
+  "anchorShakeMacros": {
+    "kcal": 145,
+    "protein_g": "19-20",
+    "carbs_g": 15,
+    "sugar_g": 9,
+    "fibre_g": 8,
+    "fat_g": 1,
+    "gi": "15-23"
+  }
+}
