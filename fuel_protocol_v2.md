@@ -89,6 +89,21 @@ Do not prescribe to:
 1. **Meal replacements vs food-based diets.** See the verification notes below before citing.
 2. **Afternoon dip in alertness.** See the verification notes below before citing a number.
 
+## 9.0 Operator: Gem (nutritional arm)
+
+- **Role:** Gem is the dedicated operator for the nutritional arm of the M.O.E. Group.
+- **Mission:** the flawless tactical execution of the Data-to-Doctrine protocol: all nutritional client data, Herbalife product logistics, client check-ins and follow-up communications, under the strategic direction of Alex. She is the Shepherd who ensures the nutritional flock is cared for with precision and empathy.
+- **Handoff protocol:** all nutritional client management is routed through Gem, freeing Alex for high-level strategy and biomechanical architecture. The aim is a system-dependent model that scales a high-touch coaching business beyond a handful of clients.
+
+**Workflow**
+
+1. **Onboarding:** Alex identifies a Fuel Protocol candidate, adds them to the Client Dashboard and tags Gem.
+2. **Data management:** Gem logs all body scan data accurately in the Client Dashboard and tracks all client communication.
+3. **Logistics:** Gem manages all Herbalife product orders so clients receive their tools efficiently.
+4. **Communication:** Gem runs the weekly check-in, gathers feedback and reports critical intelligence (including any medical exclusion in 7.0) back to Alex.
+
+**Gem's dossier:** The Data-to-Doctrine Protocol; Client Dashboard Template; Herbalife Product Catalog & Application Guide.
+
 ---
 
 ## Atlas verification notes (not part of the protocol; for the Architect)

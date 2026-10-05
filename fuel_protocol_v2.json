@@ -115,5 +115,22 @@
     "fibre_g": 8,
     "fat_g": 1,
     "gi": "15-23"
+  },
+  "operator": {
+    "name": "Gem",
+    "role": "Dedicated operator for the nutritional arm of the M.O.E. Group",
+    "mission": "Flawless tactical execution of the Data-to-Doctrine protocol: nutritional client data, Herbalife product logistics, client check-ins and follow-up communications, under the strategic direction of Alex",
+    "reportsTo": "Alex",
+    "workflow": [
+      "Onboarding: Alex adds a Fuel Protocol candidate to the Client Dashboard and tags Gem",
+      "Data management: log all body scan data in the Client Dashboard; track all client communication",
+      "Logistics: manage all Herbalife product orders",
+      "Communication: run the weekly check-in; report critical intelligence (including medical exclusions) to Alex"
+    ],
+    "dossier": [
+      "The Data-to-Doctrine Protocol",
+      "Client Dashboard Template",
+      "Herbalife Product Catalog & Application Guide"
+    ]
   }
 }
