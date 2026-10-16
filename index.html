@@ -303,7 +303,8 @@
             <!-- Mobile module picker -->
             <div class="xl:hidden p-4 border-b border-[#222] bg-[#0a0a0d]">
                 <label for="module-select" class="block text-[10px] font-semibold uppercase tracking-wider text-gray-400 mb-1">Choose a module</label>
-                <select id="module-select" onchange="loadModule(this.value)" class="w-full bg-[#050505] border border-[#333] rounded-lg px-3 py-3 text-sm text-white focus:outline-none focus:border-brand-accent placeholder:text-gray-500/50 placeholder:italic"></select>
+                <select id="module-select" onchange="loadModule(this.value, true)" oninput="loadModule(this.value, true)" class="w-full bg-[#050505] border border-[#333] rounded-lg px-3 py-3 text-sm text-white focus:outline-none focus:border-brand-accent placeholder:text-gray-500/50 placeholder:italic"></select>
+                <div id="module-chips" class="mt-3 flex gap-2 overflow-x-auto pb-1 -mx-1 px-1"></div>
             </div>
             <div class="flex-grow flex xl:overflow-hidden">
                 <!-- Sidebar Navigation -->
@@ -796,6 +797,10 @@
                 optHtml += `<option value="${key}">${data.title}${getCheckboxState(key) ? ' (Rx)' : ''}</option>`;
             }
             el('module-select').innerHTML = optHtml + '</optgroup>';
+            // Mobile chips: products ticked in the Client Plan first, then the rest, one tap each.
+            const keys = Object.keys(db);
+            const ordered = keys.filter(getCheckboxState).concat(keys.filter(k => !getCheckboxState(k)));
+            el('module-chips').innerHTML = ordered.map(k => `<button type="button" onclick="loadModule('${k}', true)" id="chip-${k}" class="module-chip shrink-0 px-3 py-2 rounded-full border text-[11px] whitespace-nowrap ${k === activeModuleId ? 'border-brand-accent text-white bg-brand-accent/10' : getCheckboxState(k) ? 'border-brand-accent/50 text-brand-accent' : 'border-[#333] text-gray-400'}">${db[k].title.split(' (')[0]}</button>`).join('');
             el('module-select').value = activeModuleId;
             
             // Re-apply active class
@@ -812,6 +817,11 @@
             el('panel-directory').classList.toggle('hidden', isBuilder);
             el('tab-builder').className = `py-3 text-[11px] font-bold uppercase tracking-widest mono border-b-2 ${isBuilder ? 'border-brand-accent text-white' : 'border-transparent text-gray-500'}`;
             el('tab-directory').className = `py-3 text-[11px] font-bold uppercase tracking-widest mono border-b-2 ${!isBuilder ? 'border-brand-accent text-white' : 'border-transparent text-gray-500'}`;
+            if (!isBuilder) {
+                initNav();
+                const ticked = Object.keys(db).filter(getCheckboxState);
+                if (ticked.length && !ticked.includes(activeModuleId)) loadModule(ticked[0]);
+            }
             window.scrollTo(0, 0);
         }
 
@@ -849,8 +859,23 @@
             return false;
         }
 
-        function loadModule(id) {
+        function loadModule(id, fromTap) {
+            if (!db[id]) return;
             activeModuleId = id;
+            document.querySelectorAll('.module-chip').forEach(c => {
+                const on = c.id === `chip-${id}`;
+                c.classList.toggle('border-brand-accent', on);
+                c.classList.toggle('text-white', on);
+                c.classList.toggle('bg-brand-accent/10', on);
+            });
+            if (fromTap && window.innerWidth < 1280) {
+                setTimeout(() => {
+                    const chip = el(`chip-${id}`);
+                    if (chip) chip.scrollIntoView({ inline: 'center', block: 'nearest' });
+                    const top = el('module-display').getBoundingClientRect().top + window.scrollY - 56;
+                    window.scrollTo({ top, behavior: 'smooth' });
+                }, 30);
+            }
             
             document.querySelectorAll('.nav-item').forEach(e => {
                 e.classList.remove('active');
