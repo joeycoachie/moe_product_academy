@@ -416,6 +416,35 @@
                     logic: "Breakfast = System Anchor Shake. Lunch = always chewed. Phase 1 (days 1-14) exclusion: no beef, lamb or pork. Pills with lunch: Multivitamin, Calcium, Celactivo."
                 }
             },
+            'midday_kinetic': {
+                group: 'Fuel Doctrine', title: 'Midday Kinetic Fuel (Training Day)', tag: 'POST-LUNCH TRAINING', icon: 'M13 10V3L4 14h7v7l9-11h-7z',
+                diagram: `<svg viewBox="0 0 200 100" class="w-full h-24 bg-[#0a0a0d] border border-[#222] rounded-lg my-2"><line x1="15" y1="50" x2="185" y2="50" stroke="#333" stroke-width="2"/><circle cx="25" cy="50" r="6" fill="#e0e0e0"/><circle cx="95" cy="50" r="6" fill="#f0b429"/><rect x="110" y="44" width="45" height="12" rx="3" fill="#10B981" opacity="0.5"/><circle cx="172" cy="50" r="6" fill="#3de0b0"/><text x="12" y="35" fill="#aaa" font-size="7" font-family="monospace">LUNCH</text><text x="82" y="35" fill="#f0b429" font-size="7" font-family="monospace">IGNITE</text><text x="118" y="35" fill="#10B981" font-size="7" font-family="monospace">HYDRATE</text><text x="160" y="35" fill="#3de0b0" font-size="7" font-family="monospace">REPAIR</text><text x="12" y="72" fill="#666" font-size="7" font-family="monospace">-2.5H</text><text x="84" y="72" fill="#666" font-size="7" font-family="monospace">-30M</text><text x="120" y="72" fill="#666" font-size="7" font-family="monospace">DURING</text><text x="162" y="72" fill="#666" font-size="7" font-family="monospace">+30M</text><text x="30" y="92" fill="#888" font-size="7" font-family="monospace">FULL TANK, LIGHT STOMACH, FED RECOVERY</text></svg>`,
+                client: {
+                    desc: "On days you train in the early afternoon, your lunch and drinks are timed around the session. The idea is simple: go in with your energy tank full but your stomach light, keep your fluids up while you sweat, and feed your muscles straight after.",
+                    benefitsTitle: "Your Training-Day Timeline",
+                    benefits: [
+                        "2.5 hours before, lunch: 1 cup rice or quinoa + 1 palm of chicken or white fish + 1/2 cup soft greens like spinach (not heavy broccoli or kale). No red meat today: beef takes 4-6 hours to digest, and the bouncing on the treadmill brings it back up as reflux.",
+                        "30 minutes before: 1 tsp Herbal Tea + 1/2 tsp N-R-G Guarana in 400ml cold water. This is your only caffeine for the afternoon, and it must be taken before 4:00 PM.",
+                        "During: 1 scoop H24 CR7 Drive in 500ml water, sipped between rounds to replace what you sweat out.",
+                        "Within 30 minutes after: 2 scoops H24 RS Pro in 400ml cold water (or 3 flat spoons F1 + 2 scoops F3 in 400ml cold water), then your cool-down stretches."
+                    ],
+                    usage: "Keep the order and the timing. If your session starts after 4:30 PM, skip the Tea and Guarana and train on water and CR7 only, so your sleep stays protected."
+                },
+                architect: {
+                    wolf: "Scenario: heavy mechanical load (Front-Rack Shield, 16kg kettlebells loading the spine) plus high-VGRF metabolic escalation (1000m incline at up to 170 SPM) occurring post-lunch, with zero liquid architecture consumed prior. The stomach must be empty of heavy matter while glycogen stores are full. Then 4 continuous rounds of metabolic escalation with <15s transitions drive heavy sweat loss. Post-session, the L4-L5 facets have taken maximum tension and muscle fibres are torn from the Concept2 rows: a 30-minute anabolic window opens.",
+                    shepherd: "Today we fuel you like an athlete: a full tank and a light stomach going in, fluids while you work, and repair the moment you finish.",
+                    stack: [
+                        { name: "Phase 1: The Lunch Anchor (2.5 hours pre-flight)", role: "1 cup complex carbs (rice/quinoa) + 1 palm lean protein (chicken/white fish) + 1/2 cup easily digested greens (spinach, not heavy broccoli/kale). Absolutely NO red meat: beef takes 4-6 hours to digest, and the mechanical bouncing of the 1000m incline will cause undigested meat to trigger extreme gastric reflux." },
+                        { name: "Phase 2: The Pre-Flight Ignition (30 minutes before)", role: "1 tsp Herbal Tea Concentrate + 1/2 tsp N-R-G Guarana in 400ml cold water. The Guarana provides the slow-release cognitive lock needed to hold a rigid anterior core during the Front-Rack carries. The Tea provides the thermogenic spark to maximise fat oxidation during the 1000m treadmill runs. Being after lunch, this is the only caffeine intake for the afternoon, to protect sleep architecture." },
+                        { name: "Phase 3: Intra-Flight Hydration", role: "1 scoop H24 CR7 Drive in 500ml water. 4 continuous rounds with <15s transitions mean heavy sweating: CR7 replaces lost sodium and provides a micro-trickle of 4-carb matrices to keep the muscles firing without spiking insulin." },
+                        { name: "Phase 4: Kinetic Recovery (immediately post-flight)", role: "2 scoops H24 RS Pro (or 3 flat spoons F1 + 2 scoops F3) + 400ml cold water, inside the 30-minute anabolic window. Biphasic whey/casein delivery halts muscle catabolism and begins repairing torn tissue while the client runs the Prone Sphinx Decompression and Vagal Flush." }
+                    ],
+                    scripts: [
+                        { label: "Training-Day Fuel (send to the client)", text: "Hey [Name]! 💪 Here's how I want you to fuel today's session. Timing matters as much as what you take.\n\n🍚 2.5 HOURS BEFORE (Lunch):\n• 1 cup rice or quinoa\n• 1 palm of chicken or white fish\n• 1/2 cup soft greens (spinach, not broccoli or kale)\n• No red meat today. It takes 4-6 hours to digest, and the treadmill bouncing will bring it back up as reflux.\n\n⚡ 30 MINUTES BEFORE:\n• 1 tsp Tea + 1/2 tsp Guarana in 400ml cold water\n• This is your only caffeine for the afternoon. Take it before 4:00 PM.\n\n💦 DURING:\n• 1 scoop CR7 in 500ml water, sipped between rounds. You'll sweat a lot, and this replaces it.\n\n🛡️ WITHIN 30 MINUTES AFTER:\n• 2 scoops RS Pro in 400ml cold water (or 3 flat spoons F1 + 2 scoops F3)\n• Then straight into your cool-down stretches.\n\nIf your session ends up starting after 4:30 PM, skip the Tea and Guarana and just use water and CR7. Text me after and tell me how your energy held up!" }
+                    ],
+                    logic: "Deploy for loaded + high-intensity sessions after lunch with no drinks taken earlier in the day (e.g. Front-Rack carries + incline treadmill + rows, 4 continuous rounds, <15s transitions). Caffeine: ~170mg Tea (1 tsp) + ~40mg Guarana = ~210mg, the afternoon's only caffeine; the pre-flight must land before 4:00 PM. Session after 4:30 PM: drop Tea and Guarana. Training-day variant: Tea in 400ml cold water 30 minutes pre-session replaces the standard 500ml warm 4:00 PM tea, and lunch uses 1 cup carbs + 1/2 cup soft greens instead of the standard plate. CR7 (500ml) and RS Pro (400ml) volumes here override the module defaults on training days."
+                }
+            },
             'biofilm': {
                 group: 'Clinical Anomalies', title: 'Visceral Biofilm Extrusion', tag: 'GUT PURGE EVENT', icon: 'M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636',
                 diagram: `<svg viewBox="0 0 200 100" class="w-full h-24 bg-[#0a0a0d] border border-[#222] rounded-lg my-2"><path d="M10 50 Q 50 10, 100 50 T 190 50" fill="none" stroke="#e11d48" stroke-width="2"/><circle cx="50" cy="30" r="4" fill="#3de0b0" class="animate-ping"/><path d="M15 55 Q 52 25, 98 52" fill="none" stroke="#3de0b0" stroke-width="3" stroke-dasharray="4,4"/><text x="100" y="80" fill="#888" font-size="8" font-family="monospace">SURFACTANT FLUSH: BREAKING PLIQUE ELECTROCHEMICAL BOND</text></svg>`,
@@ -836,6 +865,7 @@
                 'fibre': 'p_fibre',
                 'omega': 'p_omega',
                 'anchor_shake': 'p_f1',
+                'midday_kinetic': 'p_cr7',
                 'caffeine': 'p_tea',
                 'niteworks': 'p_nw',
                 'celactivo': 'p_celactivo',
